@@ -1,7 +1,12 @@
 require "active_support/core_ext/integer/time"
 
 Rails.application.configure do
+  # Allow ngrok tunnels for secure Shopify OAuth redirects
+  config.hosts = (config.hosts rescue []) << /[-\w]+\.ngrok\.io/
+  # Allow Cloudflare tunnels for secure Shopify OAuth redirects
+  config.hosts = (config.hosts rescue []) << /[-\w]+\.trycloudflare\.com/
   # Settings specified here will take precedence over those in config/application.rb.
+  config.hosts << "5731-182-191-179-77.in.ngrok.io"
 
   # In the development environment your application's code is reloaded any time
   # it changes. This slows down response time but is perfect for development
